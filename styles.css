@@ -743,8 +743,27 @@ footer a {
     grid-template-columns: repeat(2, minmax(120px, 1fr));
   }
 
+  .hero {
+    min-height: 74vh;
+  }
+
   .hero-content {
     margin-top: 3.6rem;
+  }
+
+  .hero-video {
+    object-fit: contain;
+    object-position: center center;
+    background: #0f2236;
+  }
+
+  .hero::before {
+    background: linear-gradient(
+      102deg,
+      rgba(8, 14, 23, 0.5) 0%,
+      rgba(8, 14, 23, 0.2) 50%,
+      rgba(8, 14, 23, 0.54) 100%
+    );
   }
 }
 
@@ -756,7 +775,7 @@ footer a {
 
   .hero {
     padding-top: 0.85rem;
-    min-height: 78vh;
+    min-height: 70vh;
   }
 
   .nav {
