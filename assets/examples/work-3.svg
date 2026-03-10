@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Фото примера работы">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffe8d3"/>
+      <stop offset="100%" stop-color="#ffc9a2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <rect x="80" y="80" width="1040" height="640" rx="28" fill="#fff8f1" stroke="#efb38c" stroke-width="8"/>
+  <text x="600" y="360" text-anchor="middle" fill="#5f2e14" font-family="Arial, sans-serif" font-size="54" font-weight="700">ГБО4</text>
+  <text x="600" y="430" text-anchor="middle" fill="#8a4a27" font-family="Arial, sans-serif" font-size="30">Загрузите фото работы</text>
+</svg>

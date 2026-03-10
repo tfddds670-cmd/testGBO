@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Фон с газобаллонным оборудованием">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2a1508"/>
+      <stop offset="100%" stop-color="#4b2713"/>
+    </linearGradient>
+    <linearGradient id="cyl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff8d46"/>
+      <stop offset="100%" stop-color="#dc4f10"/>
+    </linearGradient>
+    <linearGradient id="pipe" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffc08f"/>
+      <stop offset="100%" stop-color="#ff8840"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1360" cy="120" r="240" fill="#ff8e4a" opacity="0.15"/>
+  <circle cx="250" cy="740" r="280" fill="#ff9d57" opacity="0.12"/>
+
+  <g opacity="0.9">
+    <rect x="940" y="180" width="380" height="520" rx="190" fill="url(#cyl)"/>
+    <rect x="1000" y="140" width="260" height="80" rx="28" fill="#ffbc8d"/>
+    <rect x="1088" y="84" width="84" height="72" rx="14" fill="#ffe1c5"/>
+    <circle cx="1130" cy="120" r="12" fill="#cf4d16"/>
+  </g>
+
+  <g opacity="0.8">
+    <rect x="730" y="420" width="260" height="40" rx="20" fill="url(#pipe)"/>
+    <rect x="620" y="410" width="120" height="60" rx="30" fill="#ffd6b2"/>
+    <rect x="570" y="360" width="58" height="160" rx="22" fill="#ffe5cd"/>
+    <circle cx="598" cy="340" r="38" fill="#ff9f66"/>
+  </g>
+
+  <g stroke="#ffd4ac" stroke-width="8" fill="none" opacity="0.5">
+    <path d="M0 230 C300 160, 380 320, 640 260 S1080 130, 1600 250"/>
+    <path d="M0 690 C260 590, 460 770, 740 650 S1200 520, 1600 670"/>
+  </g>
+
+  <g fill="#fff2e6" opacity="0.65">
+    <circle cx="180" cy="160" r="5"/>
+    <circle cx="320" cy="120" r="4"/>
+    <circle cx="420" cy="220" r="6"/>
+    <circle cx="1480" cy="300" r="5"/>
+    <circle cx="1310" cy="420" r="4"/>
+    <circle cx="90" cy="540" r="6"/>
+  </g>
+</svg>
