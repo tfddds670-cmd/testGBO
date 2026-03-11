@@ -5,6 +5,7 @@ const quizForm = document.getElementById("quiz-form");
 const quizResult = document.getElementById("quiz-result");
 const paybackForm = document.getElementById("payback-form");
 const paybackResult = document.getElementById("payback-result");
+const portfolioGrid = document.getElementById("portfolio-grid");
 
 if (calcForm && resultNode) {
   calcForm.addEventListener("submit", (event) => {
@@ -93,6 +94,32 @@ if (paybackForm && paybackResult) {
     )} ₽.`;
   });
 }
+
+const loadPortfolio = async () => {
+  if (!portfolioGrid) return;
+  try {
+    const res = await fetch("assets/examples/index.json", { cache: "no-store" });
+    if (!res.ok) return;
+    const files = await res.json();
+    portfolioGrid.innerHTML = "";
+    files
+      .filter((name) => typeof name === "string")
+      .forEach((name) => {
+        const figure = document.createElement("figure");
+        figure.className = "portfolio-item";
+        const img = document.createElement("img");
+        img.loading = "lazy";
+        img.src = `assets/examples/${name}`;
+        img.alt = "Пример установки ГБО";
+        figure.appendChild(img);
+        portfolioGrid.appendChild(figure);
+      });
+  } catch {
+    // If manifest is missing, keep empty grid.
+  }
+};
+
+loadPortfolio();
 
 const revealTargets = document.querySelectorAll(
   "section, .card, .price-grid article, .portfolio-item, .messenger-card"
