@@ -327,74 +327,6 @@ h1 {
   margin-top: 1.4rem;
 }
 
-.hero-mini-calc {
-  margin-top: 1.4rem;
-  padding: 1rem 1.1rem;
-  border-radius: 16px;
-  border: 1px solid rgba(122, 179, 236, 0.45);
-  background: rgba(20, 44, 74, 0.55);
-  box-shadow: 0 14px 28px rgba(10, 22, 36, 0.35);
-  max-width: 560px;
-}
-
-.quick-calc-head {
-  display: grid;
-  gap: 0.2rem;
-  margin-bottom: 0.8rem;
-}
-
-.quick-calc-head span {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #9bc5ef;
-  font-weight: 700;
-}
-
-.quick-calc-head strong {
-  font-size: 1.1rem;
-  color: #e8f3ff;
-}
-
-.quick-calc-form {
-  display: grid;
-  gap: 0.7rem;
-}
-
-.quick-calc-form label {
-  display: grid;
-  gap: 0.35rem;
-  color: #d8e9fb;
-  font-weight: 600;
-  font-size: 0.92rem;
-}
-
-.quick-calc-form input {
-  background: rgba(245, 251, 255, 0.92);
-}
-
-.quick-calc-form .btn {
-  width: fit-content;
-}
-
-.quick-calc-result {
-  margin-top: 0.65rem;
-  color: #cfe3f8;
-  font-weight: 600;
-}
-
-.quick-calc-link {
-  display: inline-flex;
-  margin-top: 0.45rem;
-  color: #f2f7ff;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.quick-calc-link:hover {
-  text-decoration: underline;
-}
-
 .btn {
   border: 0;
   cursor: pointer;
@@ -747,49 +679,12 @@ textarea:focus {
 }
 
 .faq-list details {
-  padding: 0.9rem 1rem;
-  border-radius: 16px;
-  border: 1px solid #d6e4f7;
-  background: #f4f8ff;
-  transition: box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  padding: 0.8rem 0.9rem;
 }
 
 .faq-list summary {
   cursor: pointer;
   font-weight: 800;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.faq-list summary::marker {
-  display: none;
-}
-
-.faq-list summary::after {
-  content: "+";
-  width: 1.8rem;
-  height: 1.8rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  background: #e6f0ff;
-  color: #2a5ea7;
-  font-weight: 700;
-  transition: transform 0.2s ease;
-}
-
-.faq-list details[open] {
-  background: #ffffff;
-  box-shadow: 0 14px 26px rgba(20, 62, 120, 0.12);
-  transform: translateY(-2px);
-}
-
-.faq-list details[open] summary::after {
-  content: "–";
-  transform: rotate(180deg);
 }
 
 .faq-list p {
@@ -926,14 +821,6 @@ footer a {
 
   .hero-features {
     grid-template-columns: 1fr;
-  }
-
-  .hero-mini-calc {
-    padding: 0.9rem;
-  }
-
-  .quick-calc-form .btn {
-    width: 100%;
   }
 
   .portfolio-item img {
