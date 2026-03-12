@@ -9,6 +9,9 @@ const portfolioGrid = document.getElementById("portfolio-grid");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 const lightboxClose = document.getElementById("lightbox-close");
+const quickCalcForm = document.getElementById("quick-calc-form");
+const quickCalcResult = document.getElementById("quick-calc-result");
+const quickCalcWrap = document.getElementById("quick-calc");
 
 const openLightbox = (url) => {
   if (!url || !lightbox || !lightboxImg) return false;
@@ -108,6 +111,37 @@ if (paybackForm && paybackResult) {
   });
 }
 
+if (quickCalcForm && quickCalcResult && quickCalcWrap) {
+  quickCalcForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const mileage = Number(document.getElementById("qc-mileage").value);
+    const consumption = Number(document.getElementById("qc-consumption").value);
+    const petrol = Number(quickCalcWrap.dataset.petrol || "58");
+    const gas = Number(quickCalcWrap.dataset.gas || "30");
+
+    if (!mileage || !consumption) {
+      quickCalcResult.textContent = "Введите пробег и расход, чтобы увидеть экономию.";
+      return;
+    }
+
+    const monthlyLiters = (mileage / 100) * consumption;
+    const monthlyPetrolCost = monthlyLiters * petrol;
+    const monthlyGasCost = monthlyLiters * gas * 1.1;
+    const monthlySaving = Math.round(monthlyPetrolCost - monthlyGasCost);
+
+    if (monthlySaving <= 0) {
+      quickCalcResult.textContent =
+        "При этих значениях экономия не рассчитана. Проверьте пробег или расход.";
+      return;
+    }
+
+    const yearlySaving = monthlySaving * 12;
+    quickCalcResult.textContent = `Экономия в месяц: ~${monthlySaving.toLocaleString(
+      "ru-RU"
+    )} ₽. В год: ~${yearlySaving.toLocaleString("ru-RU")} ₽.`;
+  });
+}
+
 const loadPortfolio = async () => {
   if (!portfolioGrid) return;
   try {
@@ -171,6 +205,18 @@ if (lightbox && lightboxClose) {
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") close();
+  });
+}
+
+const faqDetails = document.querySelectorAll(".faq-list details");
+if (faqDetails.length) {
+  faqDetails.forEach((detail) => {
+    detail.addEventListener("toggle", () => {
+      if (!detail.open) return;
+      faqDetails.forEach((other) => {
+        if (other !== detail) other.open = false;
+      });
+    });
   });
 }
 

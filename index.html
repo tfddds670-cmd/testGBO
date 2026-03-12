@@ -80,6 +80,27 @@
           <li>Гарантия 3 года на работы и комплект</li>
           <li>Помощь с оформлением документов</li>
         </ul>
+        <div class="hero-mini-calc" id="quick-calc" data-petrol="58" data-gas="30">
+          <div class="quick-calc-head">
+            <span>Мини-калькулятор</span>
+            <strong>Сколько экономите в месяц?</strong>
+          </div>
+          <form id="quick-calc-form" class="quick-calc-form">
+            <label>
+              Пробег в месяц (км)
+              <input id="qc-mileage" type="number" min="300" step="100" placeholder="2000" required />
+            </label>
+            <label>
+              Расход (л/100 км)
+              <input id="qc-consumption" type="number" min="4" max="30" step="0.1" placeholder="9.5" required />
+            </label>
+            <button class="btn btn-primary" type="submit">Показать экономию</button>
+          </form>
+          <p class="quick-calc-result" id="quick-calc-result">
+            Считаем по средним ценам: бензин 58 ₽/л и газ 30 ₽/л.
+          </p>
+          <a class="quick-calc-link" href="#payback">Нужен точный расчет →</a>
+        </div>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#quiz">Подобрать комплект</a>
           <a class="btn btn-primary" href="#calc">Рассчитать стоимость</a>
