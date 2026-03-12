@@ -6,6 +6,19 @@ const quizResult = document.getElementById("quiz-result");
 const paybackForm = document.getElementById("payback-form");
 const paybackResult = document.getElementById("payback-result");
 const portfolioGrid = document.getElementById("portfolio-grid");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const lightboxClose = document.getElementById("lightbox-close");
+
+const openLightbox = (url) => {
+  if (!url || !lightbox || !lightboxImg) return false;
+  lightboxImg.src = url;
+  lightbox.classList.add("open");
+  lightbox.setAttribute("aria-hidden", "false");
+  lightbox.removeAttribute("hidden");
+  document.body.classList.add("no-scroll");
+  return true;
+};
 
 if (calcForm && resultNode) {
   calcForm.addEventListener("submit", (event) => {
@@ -107,12 +120,24 @@ const loadPortfolio = async () => {
       .forEach((name) => {
         const figure = document.createElement("figure");
         figure.className = "portfolio-item";
+        const link = document.createElement("a");
+        link.className = "portfolio-link";
+        link.href = `assets/examples/${name}`;
+        link.target = "_blank";
+        link.rel = "noopener";
         const img = document.createElement("img");
         img.loading = "lazy";
         img.src = `assets/examples/${name}`;
         img.alt = "Пример установки ГБО";
-        figure.appendChild(img);
+        img.dataset.full = `assets/examples/${name}`;
+        img.addEventListener("click", (e) => {
+          const ok = openLightbox(img.dataset.full);
+          if (ok) e.preventDefault();
+        });
+        link.appendChild(img);
+        figure.appendChild(link);
         portfolioGrid.appendChild(figure);
+        observeReveal(figure);
       });
   } catch {
     // If manifest is missing, keep empty grid.
@@ -121,12 +146,47 @@ const loadPortfolio = async () => {
 
 loadPortfolio();
 
+if (portfolioGrid) {
+  portfolioGrid.addEventListener("click", (e) => {
+    const link = e.target.closest ? e.target.closest(".portfolio-link") : null;
+    if (!link) return;
+    const img = link.querySelector("img");
+    const ok = openLightbox(img?.dataset.full || link.href);
+    if (ok) e.preventDefault();
+  });
+}
+
+if (lightbox && lightboxClose) {
+  const close = () => {
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
+    lightbox.setAttribute("hidden", "");
+    document.body.classList.remove("no-scroll");
+    if (lightboxImg) lightboxImg.src = "";
+  };
+
+  lightboxClose.addEventListener("click", close);
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+  });
+}
+
+let revealObserver;
+const observeReveal = (node) => {
+  if (!revealObserver) return;
+  node.classList.add("reveal");
+  revealObserver.observe(node);
+};
+
 const revealTargets = document.querySelectorAll(
   "section, .card, .price-grid article, .portfolio-item, .messenger-card"
 );
 
 if (revealTargets.length) {
-  const revealObserver = new IntersectionObserver(
+  revealObserver = new IntersectionObserver(
     (entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -138,10 +198,7 @@ if (revealTargets.length) {
     { threshold: 0.12 }
   );
 
-  revealTargets.forEach((node) => {
-    node.classList.add("reveal");
-    revealObserver.observe(node);
-  });
+  revealTargets.forEach((node) => observeReveal(node));
 }
 
 const counters = document.querySelectorAll(".counter");
